@@ -13,6 +13,9 @@ module MEM(address, dataIn, dataOut, MFC, R_W, EN, reset);
 		for(x = 0; x < 20; x = x + 1)begin
 			mem[x] = 16'b0;
 		end
+		
+		mem[0] = 16'd4;
+		
 		MFC = 0;
 		dataOut = 16'bz;
 	end

@@ -1,0 +1,71 @@
+{C:/Users/ronve/Desktop/Synthesys and modeling/Projects/Final Project/Step #2/microcontroller/src/IOPort0.v} {0 {vlog -work work -stats=none {C:/Users/ronve/Desktop/Synthesys and modeling/Projects/Final Project/Step #2/microcontroller/src/IOPort0.v}
+Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 2015
+** Error: (vlog-66) Execution of vlib failed. Please check the error log for more details.
+
+
+} {3.0 4.0} {}} {C:/Users/ronve/Desktop/Synthesys and modeling/Projects/Final Project/Step #2/microcontroller/src/busDriver.v} {0 {vlog -work work -stats=none {C:/Users/ronve/Desktop/Synthesys and modeling/Projects/Final Project/Step #2/microcontroller/src/busDriver.v}
+Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 2015
+** Error: (vlog-66) Execution of vlib failed. Please check the error log for more details.
+
+
+} {3.0 4.0} {}} {C:/Users/ronve/Desktop/Synthesys and modeling/Projects/Final Project/Step #2/microcontroller/src/IOPort1.v} {0 {vlog -work work -stats=none {C:/Users/ronve/Desktop/Synthesys and modeling/Projects/Final Project/Step #2/microcontroller/src/IOPort1.v}
+Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 2015
+** Error: (vlog-66) Execution of vlib failed. Please check the error log for more details.
+
+
+} {3.0 4.0} {}} {C:/Users/ronve/Desktop/Synthesys and modeling/Projects/Final Project/Step #2/microcontroller/src/testBenches/tIOPort0.v} {0 {vlog -work work -stats=none {C:/Users/ronve/Desktop/Synthesys and modeling/Projects/Final Project/Step #2/microcontroller/src/testBenches/tIOPort0.v}
+Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 2015
+** Error: (vlog-66) Execution of vlib failed. Please check the error log for more details.
+
+
+} {3.0 4.0} {}} {C:/Users/ronve/Desktop/Synthesys and modeling/Projects/Final Project/Step #2/microcontroller/src/testBenches/tIOPort1.v} {0 {vlog -work work -stats=none {C:/Users/ronve/Desktop/Synthesys and modeling/Projects/Final Project/Step #2/microcontroller/src/testBenches/tIOPort1.v}
+Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 2015
+** Error: (vlog-66) Execution of vlib failed. Please check the error log for more details.
+
+
+} {3.0 4.0} {}} {C:/Users/ronve/Desktop/Synthesys and modeling/Projects/Final Project/Step #2/microcontroller/src/MDR.v} {0 {vlog -work work -stats=none {C:/Users/ronve/Desktop/Synthesys and modeling/Projects/Final Project/Step #2/microcontroller/src/MDR.v}
+Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 2015
+** Error: (vlog-66) Execution of vlib failed. Please check the error log for more details.
+
+
+} {3.0 4.0} {}} {C:/Users/ronve/Desktop/Synthesys and modeling/Projects/Final Project/Step #2/microcontroller/src/testBenches/tMDR_MAR_MEM.v} {0 {vlog -work work -stats=none {C:/Users/ronve/Desktop/Synthesys and modeling/Projects/Final Project/Step #2/microcontroller/src/testBenches/tMDR_MAR_MEM.v}
+Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 2015
+** Error: (vlog-66) Execution of vlib failed. Please check the error log for more details.
+
+
+} {3.0 4.0} {}} {C:/Users/ronve/Desktop/Synthesys and modeling/Projects/Final Project/Step #2/microcontroller/src/register.v} {0 {vlog -work work -stats=none {C:/Users/ronve/Desktop/Synthesys and modeling/Projects/Final Project/Step #2/microcontroller/src/register.v}
+Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 2015
+** Error: (vlog-66) Execution of vlib failed. Please check the error log for more details.
+
+
+} {3.0 4.0} {}} {C:/Users/ronve/Desktop/Synthesys and modeling/Projects/Final Project/Step #2/microcontroller/src/testBenches/tPC.v} {0 {vlog -work work -stats=none {C:/Users/ronve/Desktop/Synthesys and modeling/Projects/Final Project/Step #2/microcontroller/src/testBenches/tPC.v}
+Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 2015
+** Error: (vlog-66) Execution of vlib failed. Please check the error log for more details.
+
+
+} {3.0 4.0} {}} {C:/Users/ronve/Desktop/Synthesys and modeling/Projects/Final Project/Step #2/microcontroller/src/MEM.v} {0 {vlog -work work -stats=none {C:/Users/ronve/Desktop/Synthesys and modeling/Projects/Final Project/Step #2/microcontroller/src/MEM.v}
+Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 2015
+** Error: (vlog-66) Execution of vlib failed. Please check the error log for more details.
+
+
+} {3.0 4.0} {}} {C:/Users/ronve/Desktop/Synthesys and modeling/Projects/Final Project/Step #2/microcontroller/src/MAR.v} {0 {vlog -work work -stats=none {C:/Users/ronve/Desktop/Synthesys and modeling/Projects/Final Project/Step #2/microcontroller/src/MAR.v}
+Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 2015
+** Error: (vlog-66) Execution of vlib failed. Please check the error log for more details.
+
+
+} {3.0 4.0} {}} {C:/Users/ronve/Desktop/Synthesys and modeling/Projects/Final Project/Step #2/microcontroller/src/testBenches/tRegisters.v} {0 {vlog -work work -stats=none {C:/Users/ronve/Desktop/Synthesys and modeling/Projects/Final Project/Step #2/microcontroller/src/testBenches/tRegisters.v}
+Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 2015
+** Error: (vlog-66) Execution of vlib failed. Please check the error log for more details.
+
+
+} {3.0 4.0} {}} {C:/Users/ronve/Desktop/Synthesys and modeling/Projects/Final Project/Step #2/microcontroller/src/PC.v} {0 {vlog -work work -stats=none {C:/Users/ronve/Desktop/Synthesys and modeling/Projects/Final Project/Step #2/microcontroller/src/PC.v}
+Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 2015
+** Error: (vlog-66) Execution of vlib failed. Please check the error log for more details.
+
+
+} {3.0 4.0} {}} {C:/Users/ronve/Desktop/Synthesys and modeling/Projects/Final Project/Step #2/microcontroller/src/testBenches/tMAR.v} {0 {vlog -work work -stats=none {C:/Users/ronve/Desktop/Synthesys and modeling/Projects/Final Project/Step #2/microcontroller/src/testBenches/tMAR.v}
+Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 2015
+** Error: (vlog-66) Execution of vlib failed. Please check the error log for more details.
+
+
+} {3.0 4.0} {}}
