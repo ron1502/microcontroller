@@ -1,19 +1,27 @@
 
 module tRegisters;
-	reg[1:0] index;
-	reg[15:0] dataIn;
-	wire[15:0] dataOut;
-	reg rEn, wEn, reset;
+	reg[3:0] index;
+	wire[15:0] bus;
+	reg rEn, wEn, reset, loadBus;
+	reg[15:0] busVal;
 	
-	register progRegisters(index, dataIn, dataOut, rEn, wEn, reset);
-
+	busDriver driver(busVal, bus, loadBus, reset);
+	
+	register progRegisters(index, bus, rEn, wEn, reset);
+	
+	
 	initial
 	begin
+		rEn = 0;
 		reset = 1;
 		#5
 		reset = 0;
+		#5
+		busVal = 16'd20;
+		loadBus = 1;
+		#5
+		loadBus = 0;
 		index = 2'd1;
-		dataIn = 16'd20;
 		#5
 		wEn = 1;
 		#5
@@ -21,5 +29,6 @@ module tRegisters;
 		rEn = 1;
 		#5
 		rEn = 0;
+		$finish;
 	end
 endmodule

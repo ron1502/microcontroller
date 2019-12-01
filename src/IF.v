@@ -1,16 +1,20 @@
 
-module IF(reset, clk, IF, IR, pcCount, pcOutEn, marLoad,
-		  R_W, memEn, mdrReadEn, mdrROutEn);
+module IF(reset, clk, IF, IR, pcCount, pcOutEn, marLoad, irBusEn,
+		  R_W, memEn, mdrReadEn, mdrROutEn, MFC);
 
 	input wire reset, clk;
 	// PC signals
-	input wire pcCount, pcOutEn;
+	output reg pcCount, pcOutEn;
 	// MAR signals
-	input wire marLoad;
+	output reg marLoad;
 	// MDR signals
-	input wire mdrReadEn, mdrROutEn;
+	output reg mdrReadEn, mdrROutEn;
 	// IR signals
-	input wire irBusEn;
+	output reg irBusEn;
+	// MEM signal
+	output reg R_W, memEn;
+	input wire MFC;
+	
 	
 	output reg IR, IF;
 	
