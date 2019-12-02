@@ -27,13 +27,13 @@ module MEM(address, dataIn, dataOut, MFC, R_W, EN, reset);
 			begin
 				dataOut = mem[address];
 				#5 MFC = 1;
-				#10 MFC = 0;
+				#20 MFC = 0;
 			end
 			else
 			begin
 				mem[address] = dataIn;
 				#5 MFC = 1;
-				#10 MFC = 0;
+				#20 MFC = 0;
 			end
 		end
 		else
