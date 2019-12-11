@@ -12,7 +12,7 @@ module tMicrocontroller;
 		reset <= 1;
 		#5
 		reset <= 0;
-		#200
+		#1600
 		$finish;
 	end
 

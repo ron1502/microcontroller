@@ -4,7 +4,7 @@ module MEM(address, dataIn, dataOut, MFC, R_W, EN, reset);
 	input wire R_W, EN, reset;
 	output reg[15:0] dataOut;
 	output reg MFC;
-	reg[15:0] mem[19:0];
+	reg[15:0] mem[65535:0];
 	integer x;
 	
 	parameter ADD = 4'd0, SUB = 4'd1, NOT = 4'd2, AND = 4'd3,
@@ -16,7 +16,7 @@ module MEM(address, dataIn, dataOut, MFC, R_W, EN, reset);
 	
 	always @(posedge reset)
 	begin
-		for(x = 0; x < 20; x = x + 1)begin
+		for(x = 0; x < 65536; x = x + 1)begin
 			mem[x] = 16'b0;
 		end
 		

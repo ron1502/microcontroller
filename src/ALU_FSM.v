@@ -1,5 +1,5 @@
 
-module ALUOps(clk, reset, ALUstr, opCode, DIRiEn, DIRjEn, DBRjEn, RrEn, RwEn,
+module ALU_FSM(clk, reset, ALUstr, opCode, DIRiEn, DIRjEn, DBRjEn, RrEn, RwEn,
 			  ALUEnIn1, ALUEnIn2, ALUOutEn, IF);
 	
 	input wire clk, reset, ALUstr;
@@ -31,11 +31,7 @@ module ALUOps(clk, reset, ALUstr, opCode, DIRiEn, DIRjEn, DBRjEn, RrEn, RwEn,
 	begin
 		if(reset == 1)
 		begin
-			nextState <= S0;
-			RrEn <= 0;
-			ALUOutEn <= 0;
-			DBRjEn <= 0;
-			//signal resetting takes place
+			currState <= S0;
 		end
 		else currState <= nextState;
 	end
@@ -45,6 +41,18 @@ module ALUOps(clk, reset, ALUstr, opCode, DIRiEn, DIRjEn, DBRjEn, RrEn, RwEn,
 		case(currState)
 			S0: begin
 				if(ALUstr == 1) nextState <= S1;
+				else
+				begin
+					RrEn <= 0;
+					RwEn <= 0;
+					DIRjEn <= 0;
+					DBRjEn <= 0;
+					DIRiEn <= 0;
+					ALUEnIn1 <= 0;
+					ALUEnIn2 <= 0;
+					ALUOutEn <= 0;
+					nextState <= S0;
+				end
 			end
 			S1: begin
 				DIRiEn <= 1;
@@ -121,13 +129,15 @@ module ALUOps(clk, reset, ALUstr, opCode, DIRiEn, DIRjEn, DBRjEn, RrEn, RwEn,
 			S8: begin
 				nextState <= S0;
 			end
+			default: begin
+				nextState <= S0;
+			end
 		endcase
 	end
 	
 	always @(nextState)
 	begin
-		if(nextState == S0) IF <= 1'bz;
-		else if(nextState == S8) IF <= 1;
+		if(nextState == S8) IF <= 1;
 		else IF <= 0;
 	end
 endmodule

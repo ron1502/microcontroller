@@ -15,38 +15,49 @@ module IF(reset, clk, IF, IR, pcCount, pcOutEn, marLoad, irBusEn,
 	output reg R_W, memEn;
 	input wire MFC;
 	
-	
-	output reg IR, IF;
+	input wire IF;
+	output reg IR;
 	
 	reg[3:0] currState, nextState;
 
-	parameter S0 = 4'd0, S1 = 4'd1, S2 = 4'd2, S3 = 4'd3, S4 = 4'd4, S5 = 4'd5,
-			  S6 = 4'd6, S7 = 4'd7, S8 = 4'd8, S9 = 4'd9;
+	parameter SR = 4'd0, SS = 4'd1, S0 = 4'd2, S1 = 4'd3, S2 = 4'd4, S3 = 4'd5, S4 = 4'd6, S5 = 4'd7,
+			  S6 = 4'd8, S7 = 4'd9, S8 = 4'd10, S9 = 4'd11;
 			  
 	always @(posedge clk or posedge reset)
 	begin
-		if(reset == 1)
-		begin
-			nextState <= S0;
-			IF = 1;
-			IR = 0;
-			mdrROutEn = 0; //reseting tristate buffer signal;
-			//send reset signal to FSMs
-		end
-		else
-		begin
-			currState <= nextState;
-		end
+		if(reset == 1) currState <= SR;
+		else currState <= nextState;
 	end
 	
 	//state transition
-	always @(currState)
+	always @(currState or IF)
 	begin
 		case(currState)
+			SR:
+			begin
+				nextState <= S0;
+				//PC signals
+				pcOutEn <= 0;
+				pcCount <= 0;
+				//MAR signals
+				marLoad <= 0;
+				//MEM signals
+				R_W <= 0;
+				memEn <= 0;
+				//MDR signals
+				mdrReadEn <= 0;
+				mdrROutEn <= 0;
+				// IR signals
+				irBusEn <= 0;
+				//send reset signal to FSMs
+			end
+			SS :
+			begin
+				if(IF == 1) nextState <= S0;
+				else nextState <= SS;
+			end
 			S0 :
 			begin
-				if(IF == 0) nextState <= S0;
-				IF <= 0;
 				pcCount <= 1;
 				nextState <= S1;
 			end
@@ -78,6 +89,7 @@ module IF(reset, clk, IF, IR, pcCount, pcOutEn, marLoad, irBusEn,
 			begin
 				mdrReadEn <= 1;
 				memEn <= 0;
+				R_W <= 0;
 				nextState <= S6;
 			end
 			S6 :
@@ -97,8 +109,8 @@ module IF(reset, clk, IF, IR, pcCount, pcOutEn, marLoad, irBusEn,
 				mdrROutEn <= 0;
 				nextState <= S9;
 			end
-			S9 : nextState <= S0; //Extra state provides extra time for the bus to be cleaned
-			default: nextState <= S0;
+			S9 : nextState <= SS; //Extra state provides extra time for the bus to be cleaned
+			default: nextState <= SS;
 		endcase
 	end
 	

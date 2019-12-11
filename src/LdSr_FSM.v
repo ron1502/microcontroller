@@ -36,9 +36,7 @@ module LdSr_FSM(clk, reset, LDSRstr, DIRiEn, DIRjEn, opCode, RrEn, RwEn, MARload
 	begin
 		if(reset == 1)
 		begin
-			MDRrOutEn <= 0;
-			RrEn <= 0;
-			nextState <= S0;
+			currState <= S0;
 		end
 		else
 			currState <= nextState;
@@ -49,6 +47,20 @@ module LdSr_FSM(clk, reset, LDSRstr, DIRiEn, DIRjEn, opCode, RrEn, RwEn, MARload
 		case(currState)
 			S0:
 				if(LDSRstr == 1) nextState <= S1;
+				else
+				begin
+					DIRiEn <= 0;
+					DIRjEn <= 0;
+					RrEn <= 0;
+					RwEn <= 0;
+					MARload <= 0;
+					MDRwriteEn <= 0;
+					MDRreadEn <= 0;
+					MDRrOutEn <= 0;
+					MEMR_W <= 0;
+					MEMEn <= 0;
+					nextState <= S0;
+				end
 			S1: begin
 				DIRiEn <= 1;
 				nextState <= S2;
@@ -143,13 +155,15 @@ module LdSr_FSM(clk, reset, LDSRstr, DIRiEn, DIRjEn, opCode, RrEn, RwEn, MARload
 			S4: begin
 				nextState <= S0;
 			end
+			default: begin
+				nextState <= S0;
+			end
 		endcase
 	end
 	
 	always @(nextState)
 	begin
-		if(nextState == S0) IF <= 1'bz;
-		else if(nextState == S4) IF <= 1;
+		if(nextState == S4) IF <= 1;
 		else IF <= 0;
 	end
 	

@@ -1,24 +1,20 @@
 
-module IOPort0(dataOut, readBusEn, bus, writeBusEn, reset);
-	output reg [15:0] dataOut;
+module IOPort0(dataOut, bus, rEn, wEn, reset);
+	output wire [15:0] dataOut;
 	inout wire [15:0] bus;
-	input wire reset, readBusEn, writeBusEn;
+	input wire reset, wEn, rEn;
 	
 	reg [15:0] savedData;
-	
-	always @(posedge reset)
-	begin
-		savedData <= 16'd0;
-	end
 
-	assign bus = writeBusEn ? savedData : 16'dz;
+	assign bus = rEn ? savedData : 16'dz;
 	
-	always @(posedge readBusEn)
+	always @(posedge wEn or posedge reset)
 	begin
-		savedData <= bus;
+		if(reset == 1) savedData <= 16'd0;
+		else savedData <= bus;
 	end
 	
-	always dataOut <= savedData;
+	assign dataOut = savedData;
 	
 endmodule
 	

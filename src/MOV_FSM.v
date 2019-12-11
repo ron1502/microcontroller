@@ -18,24 +18,14 @@ module MOVFSM(clk, reset, MOVstr, opCode, IF, DIRiEn, DIRjEn, DBRjEn, RrEn, RwEn
 	
 	always @(posedge clk or posedge reset)
 	begin
-		if(reset == 1)
-		begin
-			RrEn <= 0;
-			DBRjEn <= 0;
-			nextState <= S0;
-		end
-		else
-		begin
-			currState <= nextState;
-		end
+		if(reset == 1) currState <= S0;
+		else currState <= nextState;
 	end
 	
-	always @(currState)
+	always @(currState or MOVstr)
 	begin
 		case(currState)
 			S0: begin
-				IF <= 1'bz;
-
 				if(MOVstr == 1)
 				begin
 					case(opCode)
@@ -46,6 +36,15 @@ module MOVFSM(clk, reset, MOVstr, opCode, IF, DIRiEn, DIRjEn, DBRjEn, RrEn, RwEn
 						default:
 							nextState <= 0;
 					endcase
+				end
+				else
+				begin
+					RrEn <= 0;
+					RwEn <= 0;
+					DIRiEn <= 0;
+					DIRjEn <= 0;
+					DBRjEn <= 0;
+					nextState <= 0;
 				end
 			end
 			S011: begin
@@ -89,8 +88,7 @@ module MOVFSM(clk, reset, MOVstr, opCode, IF, DIRiEn, DIRjEn, DBRjEn, RrEn, RwEn
 	
 	always @(nextState)
 	begin
-		if(nextState == S0) IF <= 1'bz;
-		else if(nextState == S4) IF <= 1;
+		if(nextState == S4) IF <= 1;
 		else IF <= 0;
 	end
 endmodule

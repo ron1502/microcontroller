@@ -5,7 +5,7 @@ module decoder(IR, instruction, ALUstr, MOVstr, LDSRstr, opCode, index, reset, I
 	input wire BRjEn;
 	input wire[15:0] instruction;
 	
-	output reg[15:0] bus;
+	output wire[15:0] bus;
 	output reg[3:0] index;
 	output reg[3:0] opCode; 
 	output reg ALUstr, MOVstr, LDSRstr;
@@ -16,20 +16,24 @@ module decoder(IR, instruction, ALUstr, MOVstr, LDSRstr, opCode, index, reset, I
 			  SUBI = 4'd8, MOVI = 4'd9, MOV = 4'd10, LOAD = 4'd11,
 			  STORE = 4'd12;
 	
-	always @(BRjEn)
-	begin
-		if (BRjEn == 1) bus <= {10'd0, instruction[5:0]};
-		else bus <= 16'bz;
-	end
+	assign bus = (BRjEn == 1) ? {10'd0, instruction[5:0]} : 16'bz;
+
 	
 	always @(posedge IR or posedge reset or posedge IF)
 	begin
-		if(reset == 1 || IF == 1)
+		if(reset == 1)
 		begin
-			index <= 4'd0;
 			ALUstr <= 0;
 			MOVstr <= 0;
 			LDSRstr <= 0;
+			opCode <= 4'd0;
+		end
+		else if(IF == 1)
+		begin
+			ALUstr <= 0;
+			MOVstr <= 0;
+			LDSRstr <= 0;
+			opCode <= 4'd0;
 		end
 		else
 		begin
@@ -51,13 +55,10 @@ module decoder(IR, instruction, ALUstr, MOVstr, LDSRstr, opCode, index, reset, I
 		end
 	end
 	
-	always @(posedge IRiEn)
+	always @(posedge IRiEn or posedge IRjEn or posedge reset)
 	begin
-		index <= instruction[11:6];
-	end
-	
-	always @(posedge IRjEn)
-	begin
-		index <= instruction[5:0];
+		if(IRiEn == 1) index <= instruction[11:6];
+		else if(IRjEn == 1) index <= instruction[5:0];
+		else index <= 16'd0;
 	end
 endmodule

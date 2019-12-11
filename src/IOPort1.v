@@ -1,25 +1,14 @@
 
-module IOPort1(bus, writeBusEn, readEn, dataIn, reset);
-	output reg [15:0] bus;
+module IOPort1(bus, rEn, dataIn);
+	output wire [15:0] bus;
 	input wire [15:0] dataIn;
-	input wire reset, readEn, writeBusEn;
+	input wire rEn;
 	
 	reg [15:0] savedData;
 	
-	always @(posedge reset)
-	begin
-		savedData <= 16'd0;
-	end
+	assign bus = (rEn == 1) ? savedData : 16'dz;
 	
-	always @(writeBusEn)
-	begin
-		if(writeBusEn == 1) bus <= savedData;
-		else bus <= 16'dz;
-	end
+	always @(dataIn) savedData <= dataIn;
 	
-	always @(posedge readEn)
-	begin
-		savedData <= dataIn;
-	end
 endmodule
 	
